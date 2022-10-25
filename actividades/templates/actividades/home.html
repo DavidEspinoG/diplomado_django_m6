@@ -1,0 +1,28 @@
+{% extends 'actividades/base.html' %}
+
+{% block contenido %}
+<div class="container my-5">
+    <h1 class="display-6">Lista de actividades</h1>
+</div>
+
+<div class="container my-5 d-flex flex-column justify-content-end gap-3">
+    {% for actividad in actividad_list %}
+    <div class="p-3 border rounded-3 shadow-sm">
+        <div>
+            <a href="" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{actividad.titulo}}</h5>
+                    <small>{{actividad.time_since}}</small>
+                </div>
+                <p class="mb-1">{{actividad.descripcion}}</p>
+            </a>
+            <a href=""><small class="badge bg-secondary rounded-pill">{{actividad.importancia}}</small></a>
+            <a href=""><small class="badge bg-secondary rounded-pill">{{actividad.estado}}</small></a>
+        </div>
+    </div>
+    {% endfor %}
+    
+
+    
+</div>
+{% endblock %}
