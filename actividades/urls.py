@@ -5,4 +5,5 @@ app_name= "actividades"
 urlpatterns = [
     path('', ActividadesHome.as_view() , name="home"),
     path('generador/', views.ActividadesGenerador.as_view() , name="generador"),
+    path('detalle/<int:pk>/', views.ActividadesDetalle.as_view(), name='detalle' ),
 ]

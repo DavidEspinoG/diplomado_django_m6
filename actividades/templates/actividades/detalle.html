@@ -1,0 +1,16 @@
+{% extends 'actividades/base.html' %}
+
+{% block contenido %}
+<div class="container my-5">
+    <h1 class="display-6">Detalle de actividad</h1>
+</div>
+
+<div class="container">
+    <p class="lead"><strong>Título: </strong>{{actividad.titulo}}</p>
+    <p class="lead"><strong>Descripción: </strong>{{actividad.descripcion}}</p>
+    <p class="lead"><strong>Importancia: </strong>{{actividad.importancia}}</p>
+    <p class="lead"><strong>Estado: </strong>{{actividad.estado}}</p>
+    <p class="lead"><strong>Fecha límite: </strong>{{actividad.fecha_limite}}</p>
+</div>
+
+{% endblock %}

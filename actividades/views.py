@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Actividad, EtiquetaImportancia, EtiquetaEstado
 from django.views import View
 from django.shortcuts import render, redirect
@@ -13,7 +13,15 @@ class ActividadesHome(ListView):
     template_name = 'actividades/home.html'
     #Nombre de los elementos del contexto: actividad_list
     # context_object_name= cambia el nombre de los elementos del contexto
-
+    def get_queryset(self):
+        importancia_pk = self.request.GET.get('ipk', None)
+        estado_pk = self.request.GET.get('epk', None)
+        objetos = Actividad.objects.all()
+        if importancia_pk: 
+            objetos = objetos.filter(importancia=importancia_pk)
+        if estado_pk: 
+            objetos = objetos.filter(estado=estado_pk)
+        return objetos
 class ActividadesGenerador(View):
     def get(self, request):
         return render(request, template_name='actividades/generador.html')
@@ -36,3 +44,7 @@ class ActividadesGenerador(View):
             actividad.estado = et_estado[random.randint(0, len(et_estado) - 1)]
             actividad.save()
         return redirect('actividades:home')
+
+class ActividadesDetalle(DetailView):
+    model = Actividad
+    template_name = 'actividades/detalle.html'
