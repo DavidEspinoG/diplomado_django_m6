@@ -6,4 +6,5 @@ urlpatterns = [
     path('', ActividadesHome.as_view() , name="home"),
     path('generador/', views.ActividadesGenerador.as_view() , name="generador"),
     path('detalle/<int:pk>/', views.ActividadesDetalle.as_view(), name='detalle' ),
+    path('crear/', views.ActividadesCrear.as_view(), name="crear"),
 ]

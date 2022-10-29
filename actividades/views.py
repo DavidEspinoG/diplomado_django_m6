@@ -1,7 +1,8 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Actividad, EtiquetaImportancia, EtiquetaEstado
 from django.views import View
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 import lorem
 import datetime
 import random
@@ -48,3 +49,10 @@ class ActividadesGenerador(View):
 class ActividadesDetalle(DetailView):
     model = Actividad
     template_name = 'actividades/detalle.html'
+class ActividadesCrear(CreateView):
+    extra_context = {'importancias':EtiquetaImportancia.objects.all(),
+        'estados':EtiquetaEstado.objects.all()}
+    template_name = 'actividades/crear.html'
+    model = Actividad
+    fields = ['titulo', 'descripcion', 'fecha_inicio', 'fecha_limite', 'importancia', 'estado']
+    success_url = reverse_lazy('actividades:home')

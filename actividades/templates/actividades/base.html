@@ -13,6 +13,7 @@
     {% url 'actividades:home' as url_home %}
     {% url 'actividades:generador' as url_generador %}
     {% url 'blog:blog_home' as url_blog %}
+    {% url 'actividades:crear' as url_crear %}
     <div class="container-fluid bg-primary p-5">
         <h1 class="display-5 text-white">Seguimiento de actividades</h1>
     </div>
@@ -39,10 +40,10 @@
                             <a class="nav-link {% if request.path == url_home %}active {% endif %}" href="{% url 'actividades:home' %}">Actividades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == url_generador %}active {% endif %}" href="{% url 'actividades:generador' %}">Generador</a>
+                            <a class="nav-link {% if request.path == url_generador %}active {% endif %}" href="{% url 'actividades:generador' %}">Generar actividad</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == url_blog %}active {% endif %}" href="{% url 'blog:blog_home' %}">blog</a>
+                            <a class="nav-link {% if request.path == url_crear %}active {% endif %}" href="{% url 'actividades:crear' %}">Crear actividad</a>
                         </li>
                     </ul>
                     <div class="d-flex pt-3 pt-sm-0 me-2 text-light flex-column flex-sm-row gap-3">
