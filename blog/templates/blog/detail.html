@@ -7,5 +7,6 @@
     <p><strong>Contenido: </strong>{{entradablog.contenido}}</p>
     <p><strong>Fecha de creación: </strong>{{entradablog.fecha_creacion}}</p>
     <p><strong>Fecha de actualización: </strong>{{entradablog.fecha_actualizacion}}</p>
+    <a class="btn btn-primary" href="{% url 'blog:update' entradablog.id %}">Actualizar</a>
 </div>
 {% endblock %}
