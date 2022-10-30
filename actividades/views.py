@@ -14,6 +14,13 @@ class ActividadesHome(ListView):
     template_name = 'actividades/home.html'
     #Nombre de los elementos del contexto: actividad_list
     # context_object_name= cambia el nombre de los elementos del contexto
+    paginate_by = 3
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        param_get = '&'.join([f'{p}={k}' for p,k in self.request.GET.items() if p != 'page'])
+        context["param_get"] = param_get
+        return context
     def get_queryset(self):
         importancia_pk = self.request.GET.get('ipk', None)
         estado_pk = self.request.GET.get('epk', None)

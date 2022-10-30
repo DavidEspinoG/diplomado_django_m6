@@ -15,7 +15,7 @@
     {% url 'blog:blog_home' as url_blog %}
     {% url 'actividades:crear' as url_crear %}
     <div class="container-fluid bg-primary p-5">
-        <h1 class="display-5 text-white">Seguimiento de actividades</h1>
+        <h1 class="display-5 text-white">Proyecto módulo 6</h1>
     </div>
 
     <div class="container-fluid px-0 sticky-{}">
@@ -36,15 +36,16 @@
                     <!-- .me-auto es para que todo lo que esté fuera de la lista
                     se pegue al lado derecho -->
                     <ul class="navbar-nav me-auto mb-0 pt-3 pt-sm-0">
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == url_home %}active {% endif %}" href="{% url 'actividades:home' %}">Actividades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == url_generador %}active {% endif %}" href="{% url 'actividades:generador' %}">Generar actividad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == url_crear %}active {% endif %}" href="{% url 'actividades:crear' %}">Crear actividad</a>
-                        </li>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Actividades
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'actividades:home' %}">Lista de actividades</a></li>
+                              <li><a class="dropdown-item" href="{% url 'actividades:generador' %}">Generador de actividades</a></li>
+                              <li><a class="dropdown-item" href="{% url 'actividades:crear' %}">Crear actividad</a></li>
+                            </ul>
+                          </div>
                     </ul>
                     <div class="d-flex pt-3 pt-sm-0 me-2 text-light flex-column flex-sm-row gap-3">
                         <a class="text-decoration-none text-light me-3" href="">Cerrar sesión</a>
