@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from . import models
 from django.views import View
 from django.shortcuts import render, redirect
@@ -14,10 +14,12 @@ class BlogGenerator(View):
         return render(request, template_name=('blog/blog_generator.html'))
     def post(self, request): 
         cantidad = int(request.POST.get('cantidad', 0))
-        # fecha = datetime.now()
         for _ in range(cantidad):
             blog = models.EntradaBlog()
             blog.titulo = lorem.sentence()
             blog.contenido = lorem.paragraph()
             blog.save()
         return redirect('blog:home')
+class BlogDetail(DetailView):
+    model = models.EntradaBlog
+    template_name = 'blog/detail.html'

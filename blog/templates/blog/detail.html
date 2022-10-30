@@ -1,0 +1,11 @@
+{% extends 'actividades/base.html'%}
+{% block contenido %}
+
+<div class="container p-2 mt-3">
+    <h1>Detalle entrada de blog </h1>
+    <p><strong>Título: </strong>{{entradablog.titulo}}</p>
+    <p><strong>Contenido: </strong>{{entradablog.contenido}}</p>
+    <p><strong>Fecha de creación: </strong>{{entradablog.fecha_creacion}}</p>
+    <p><strong>Fecha de actualización: </strong>{{entradablog.fecha_actualizacion}}</p>
+</div>
+{% endblock %}

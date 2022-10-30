@@ -7,7 +7,7 @@
     {% for blog in blogs %}
     <div class="p-3 border rounded-3 shadow-sm">
         <div>
-            <a href="" class="list-group-item list-group-item-action">
+            <a href="{% url 'blog:detail' blog.id %} " class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{blog.titulo}}</h5>
                     <small>{{blog.contenido}}</small>
