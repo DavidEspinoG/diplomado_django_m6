@@ -4,7 +4,7 @@
     <h1 class="display-6">Blog</h1>
 </div>
 <div class="container my-5 d-flex flex-column justify-content-end gap-3">
-    {% for blog in blog_list %}
+    {% for blog in blogs %}
     <div class="p-3 border rounded-3 shadow-sm">
         <div>
             <a href="" class="list-group-item list-group-item-action">
@@ -12,10 +12,7 @@
                     <h5 class="mb-1">{{blog.titulo}}</h5>
                     <small>{{blog.contenido}}</small>
                 </div>
-                <p class="mb-1">{{blog.contenido}}...</p>
             </a>
-            <!-- <a href=""><small class="badge bg-secondary rounded-pill">{{actividad.importancia}}</small></a>
-            <a href=""><small class="badge bg-secondary rounded-pill">{{actividad.estado}}</small></a> -->
         </div>
     </div>
     {% endfor %}

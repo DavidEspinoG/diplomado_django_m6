@@ -36,7 +36,7 @@
                     <!-- .me-auto es para que todo lo que esté fuera de la lista
                     se pegue al lado derecho -->
                     <ul class="navbar-nav me-auto mb-0 pt-3 pt-sm-0">
-                        <div class="dropdown">
+                        <div class="dropdown mx-2">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Actividades
                             </a>
@@ -45,7 +45,17 @@
                               <li><a class="dropdown-item" href="{% url 'actividades:generador' %}">Generador de actividades</a></li>
                               <li><a class="dropdown-item" href="{% url 'actividades:crear' %}">Crear actividad</a></li>
                             </ul>
-                          </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Blog
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'blog:home' %}">Lista de blogs</a></li>
+                              <li><a class="dropdown-item" href="{% url 'blog:generator' %}">Generador de blogs</a></li>
+                              <li><a class="dropdown-item" href="{% url 'actividades:crear' %}">Crear blog</a></li>
+                            </ul>
+                        </div>
                     </ul>
                     <div class="d-flex pt-3 pt-sm-0 me-2 text-light flex-column flex-sm-row gap-3">
                         <a class="text-decoration-none text-light me-3" href="">Cerrar sesión</a>
