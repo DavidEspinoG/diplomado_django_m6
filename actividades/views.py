@@ -1,8 +1,8 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Actividad, EtiquetaImportancia, EtiquetaEstado
 from django.views import View
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 import lorem
 import datetime
 import random
@@ -10,12 +10,10 @@ class ActividadesHome(ListView):
     model = Actividad 
     #Nombre de la plantilla que django busca por defecto : actividad_list
     # Para cambiar el nombre de la plantilla se usa template_name = 
-
     template_name = 'actividades/home.html'
     #Nombre de los elementos del contexto: actividad_list
     # context_object_name= cambia el nombre de los elementos del contexto
     paginate_by = 3
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         param_get = '&'.join([f'{p}={k}' for p,k in self.request.GET.items() if p != 'page'])
@@ -58,8 +56,23 @@ class ActividadesDetalle(DetailView):
     template_name = 'actividades/detalle.html'
 class ActividadesCrear(CreateView):
     extra_context = {'importancias':EtiquetaImportancia.objects.all(),
-        'estados':EtiquetaEstado.objects.all()}
+        'estados':EtiquetaEstado.objects.all(),
+        'accion': 'crear'}
     template_name = 'actividades/crear.html'
     model = Actividad
     fields = ['titulo', 'descripcion', 'fecha_inicio', 'fecha_limite', 'importancia', 'estado']
     success_url = reverse_lazy('actividades:home')
+class ActividadesEditar(UpdateView):
+    extra_context = {'importancias':EtiquetaImportancia.objects.all(),
+        'estados':EtiquetaEstado.objects.all(),
+        'accion': 'editar'}
+    template_name = 'actividades/crear.html'
+    model = Actividad
+    fields = ['titulo', 'descripcion', 'fecha_inicio', 'fecha_limite', 'importancia', 'estado']
+    def get_success_url(self):
+        return reverse('actividades:detalle', args=(self.kwargs['pk'],))
+class ActividadesEliminar(DeleteView):
+    model = Actividad
+    template_name = 'actividades/detalle.html'
+    success_url = reverse_lazy('actividades:home')
+    extra_context = {'confirmar_eliminar' : True}

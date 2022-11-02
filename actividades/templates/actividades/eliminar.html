@@ -1,0 +1,15 @@
+{% extends 'actividades/base.html' %}
+
+{% block contenido %}
+<div class="container my-5">
+    <h1>Detalle entrada de blog </h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p class="lead">¿Seguro que deseas eliminar?</p>
+        <button type="submit" class="btn btn-danger">Sí</button>
+        <button type="button" class="btn btn-secondary mx-3">No</button>
+    </form>
+</div>
+
+
+{% endblock %}

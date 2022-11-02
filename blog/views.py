@@ -9,16 +9,16 @@ class BlogHome(ListView):
     template_name= 'blog/blog_home.html'
     context_object_name = 'blogs'
     paginate_by = 5
-class BlogGenerator(View):
+class BlogGenerator(CreateView):
     def get(self, request):
         return render(request, template_name=('blog/blog_generator.html'))
     def post(self, request): 
         cantidad = int(request.POST.get('cantidad', 0))
         for _ in range(cantidad):
-            blog = models.EntradaBlog()
-            blog.titulo = lorem.sentence()
-            blog.contenido = lorem.paragraph()
-            blog.save()
+            models.EntradaBlog.objects.create(
+                titulo = lorem.sentence(), 
+                contenido = lorem.paragraph()
+            ).save()
         return redirect('blog:home')
 class BlogDetail(DetailView):
     model = models.EntradaBlog

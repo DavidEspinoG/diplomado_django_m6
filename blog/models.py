@@ -1,8 +1,8 @@
 from django.db import models
 
 class EntradaBlog(models.Model):
-    titulo = models.CharField(max_length=40, verbose_name="Título")
-    contenido = models.TextField(max_length=256, verbose_name="Contenido")
+    titulo = models.CharField(max_length=128, verbose_name="Título")
+    contenido = models.TextField(verbose_name="Contenido")
     fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de creación")
     fecha_actualizacion = models.DateTimeField(auto_now=True, verbose_name="Fecha de actualización")
     class Meta():

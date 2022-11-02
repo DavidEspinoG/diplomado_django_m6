@@ -11,6 +11,16 @@
     <p class="lead"><strong>Importancia: </strong>{{actividad.importancia}}</p>
     <p class="lead"><strong>Estado: </strong>{{actividad.estado}}</p>
     <p class="lead"><strong>Fecha límite: </strong>{{actividad.fecha_limite}}</p>
+    <a class="btn btn-primary" href="{% url 'actividades:editar' actividad.id %}">Editar</a>
+    <a class="btn btn-danger" href="{% url 'actividades:eliminar' actividad.id %}">Eliminar</a>
+    {% if confirmar_eliminar %}
+    <form method="POST" class="my-3">
+        {% csrf_token %}
+        <p class="lead">¿Seguro que deseas eliminar?</p>
+        <button type="submit" class="btn btn-danger">Sí</button>
+        <a href="{% url 'actividades:detalle' actividad.id %}" class="btn btn-secondary mx-3">No</a>
+    </form>
+    {% endif %}
 </div>
 
 {% endblock %}
